@@ -38,11 +38,9 @@ public class AdminController {
 	@Autowired
 	private ProductService productService;
 	
-	@RequestMapping("/admin")
-	public ModelAndView adminHome() {
-		ModelAndView modelAndView=new ModelAndView();
-		modelAndView.setViewName("adminHome");
-		return modelAndView;
+	@GetMapping("/admin")
+	public String adminHome() {
+		return "adminHome";
 	}
 	
 	@GetMapping("/admin/categories")
@@ -130,7 +128,7 @@ public class AdminController {
 		ProductDTO productDTO=new ProductDTO();
 		productDTO.setId(product.getId());
 		productDTO.setName(product.getName());
-		productDTO.setCategoryId(product.getCategory().getId());
+		productDTO.setCategoryId(product.getCategory().getId()); 
 		productDTO.setPrice(product.getPrice());
 		productDTO.setWeight(product.getWeight());
 		productDTO.setDescription(product.getDescription());
